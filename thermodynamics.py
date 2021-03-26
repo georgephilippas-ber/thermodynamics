@@ -33,10 +33,13 @@ def thermodynamics_energy(heat_rate_: numpy.ndarray, power_: numpy.ndarray, inte
 
     energy_rate_ = heat_rate_ - power_
 
-    for i_ in numpy.arange(0, energy_.shape[0]):
-        energy_[i_] = numpy.trapz(energy_rate_[:(i_ + 1)], interval_[:(i_ + 1)])
+    try:
+        for i_ in numpy.arange(0, energy_.shape[0]):
+            energy_[i_] = numpy.trapz(energy_rate_[:(i_ + 1)], interval_[:(i_ + 1)])
 
-    return energy_
+        return energy_
+    except OverflowError:
+        return numpy.zeros_like(energy_)
 
 
 def thermodynamics_energy_sympy(heat_rate_sympy_expression_str_: str, power_sympy_expression_str_: str, interval_: numpy.ndarray):

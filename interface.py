@@ -43,7 +43,6 @@ class QWidget_thermodynamics(QWidget):
         super().__init__(parent)
 
         self.layout_ = QGridLayout()
-
 #
         self.duration_QVBoxLayout = QVBoxLayout()
 
@@ -136,19 +135,28 @@ class QWidget_thermodynamics(QWidget):
         heat_rate_plot_.set_title('$\Delta{E}_t = \int_{0}^{t} \dot{Q}(s) - \dot{W}(s) \,ds$')
         heat_rate_plot_.set_xlim(0.0, self.duration_QDial.maximum())
         heat_rate_plot_.set_ylabel('$\dot{Q}$ (kW)')
-        heat_rate_plot_.plot(interval_, thermodynamics.univariate(self.heat_rate_QLineEdit.text(), interval_), color='red')
+        try:
+            heat_rate_plot_.plot(interval_, thermodynamics.univariate(self.heat_rate_QLineEdit.text(), interval_), color='red')
+        except TypeError:
+            pass
 
         power_plot_ = self.figure_QWidget_FigureCanvas.add_subplot('power', (2, 1), (2, 1))
         power_plot_.cla()
         power_plot_.set_xlim(0.0, self.duration_QDial.maximum())
         power_plot_.set_ylabel('$\dot{W}$ (kW)')
-        power_plot_.plot(interval_, thermodynamics.univariate(self.power_QLineEdit.text(), interval_), color='green')
+        try:
+            power_plot_.plot(interval_, thermodynamics.univariate(self.power_QLineEdit.text(), interval_), color='green')
+        except TypeError:
+            pass
 
         energy_plot_ = self.figure_QWidget_FigureCanvas.add_subplot('energy', (3, 1), (3, 1))
         energy_plot_.cla()
         energy_plot_.set_xlim(0.0, self.duration_QDial.maximum())
         energy_plot_.set_xlabel('$t$ (s)')
         energy_plot_.set_ylabel('$\Delta{E}$ (kJ)')
-        energy_plot_.plot(interval_, thermodynamics.thermodynamics_energy_sympy(self.heat_rate_QLineEdit.text(), self.power_QLineEdit.text(), interval_), color='blue')
+        try:
+            energy_plot_.plot(interval_, thermodynamics.thermodynamics_energy_sympy(self.heat_rate_QLineEdit.text(), self.power_QLineEdit.text(), interval_), color='blue')
+        except TypeError:
+            pass
 
         self.figure_QWidget_FigureCanvas.get_figure().canvas.draw_idle()
