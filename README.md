@@ -5,7 +5,7 @@ thermodynamics
 `$ python3 main.py`
 ### technologies
 * [Qt/PyQt5](https://www.qt.io/)
-    * Qt (pronounced "cute"[7][8][9]) is a widget toolkit for creating graphical user interfaces as well as cross-platform applications that run on various software and hardware platforms such as Linux, Windows, macOS, Android or embedded systems with little or no change in the underlying codebase while still being a native application with native capabilities and speed. PyQt5 is a comprehensive set of Python bindings for Qt v5.
+    * Qt is a widget toolkit for creating graphical user interfaces as well as cross-platform applications that run on various software and hardware platforms such as Linux, Windows, macOS, Android or embedded systems with little or no change in the underlying codebase while still being a native application with native capabilities and speed. PyQt5 is a comprehensive set of Python bindings for Qt v5.
 * [numpy](https://numpy.org/)
     * The fundamental package for scientific computing with Python.
 * [Matplotlib](https://matplotlib.org/)
