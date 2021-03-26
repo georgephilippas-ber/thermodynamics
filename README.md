@@ -18,4 +18,5 @@ thermodynamics
 * `FigureCanvasQTAgg`
 * `numpy.trapz`
 * `numpy.zeros_like`
-* `QDesktopWidget.width(), QDesktopWidget.height()`
+* `QGridLayout`
+* `QDesktopWidget.width, QDesktopWidget.height`
