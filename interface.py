@@ -49,7 +49,7 @@ class QWidget_thermodynamics(QWidget):
         self.duration_title_QLabel = QLabel("duration")
         self.duration_title_QLabel.setAlignment(Qt.AlignCenter)
         self.duration_QDial = QDial()
-        duration_QDial_properties_ = {'minimum': 20, 'maximum': 5 * 60, 'singleStep': 1, 'pageStep': 5, 'value': 2 * 60}
+        duration_QDial_properties_ = {'minimum': 60, 'maximum': 10 * 60, 'singleStep': 1, 'pageStep': 10, 'value': 10 * 60}
         for property_name_ in duration_QDial_properties_:
             self.duration_QDial.setProperty(property_name_, duration_QDial_properties_[property_name_])
         self.duration_QDial.valueChanged.connect(lambda: self.duration_QLabel.setText(str(self.duration_QDial.value()) + ' s'))
@@ -67,7 +67,7 @@ class QWidget_thermodynamics(QWidget):
         self.step_title_QLabel = QLabel("step")
         self.step_title_QLabel.setAlignment(Qt.AlignCenter)
         self.step_QDial = QDial()
-        step_QDial_properties_ = {'minimum': 1, 'maximum': 10, 'singleStep': 1, 'pageStep': 1, 'value': 5}
+        step_QDial_properties_ = {'minimum': 1, 'maximum': 20, 'singleStep': 1, 'pageStep': 5, 'value': 2}
         for property_name_ in step_QDial_properties_:
             self.step_QDial.setProperty(property_name_, step_QDial_properties_[property_name_])
         self.step_QDial.valueChanged.connect(lambda: self.step_QLabel.setText(str(self.step_QDial.value()) + ' s'))
@@ -79,12 +79,11 @@ class QWidget_thermodynamics(QWidget):
         self.step_QVBoxLayout.addWidget(self.step_title_QLabel)
         self.step_QVBoxLayout.addWidget(self.step_QLabel)
         self.step_QVBoxLayout.addWidget(self.step_QDial)
-
 #
         self.heat_rate_QHBoxLayout = QHBoxLayout()
 
         self.heat_rate_QLabel = QLabel("heat rate (kW - s)")
-        self.heat_rate_QLineEdit = QLineEdit('0 * t')
+        self.heat_rate_QLineEdit = QLineEdit('2.0 + exp(-0.03 * t)')
 
         self.heat_rate_QHBoxLayout.addWidget(self.heat_rate_QLabel)
         self.heat_rate_QHBoxLayout.addWidget(self.heat_rate_QLineEdit)
@@ -92,7 +91,7 @@ class QWidget_thermodynamics(QWidget):
         self.power_QHBoxLayout = QHBoxLayout()
 
         self.power_QLabel = QLabel("power (kW - s)")
-        self.power_QLineEdit = QLineEdit('0 * t')
+        self.power_QLineEdit = QLineEdit('2.15')
 
         self.power_QHBoxLayout.addWidget(self.power_QLabel)
         self.power_QHBoxLayout.addWidget(self.power_QLineEdit)
@@ -132,7 +131,7 @@ class QWidget_thermodynamics(QWidget):
 
         heat_rate_plot_ = self.figure_QWidget_FigureCanvas.add_subplot('heat_rate', (1, 1), (1, 1))
         heat_rate_plot_.cla()
-        heat_rate_plot_.set_title('$\Delta{E}_t = \int_{0}^{t} \dot{Q}(s) - \dot{W}(s) \,ds$')
+        heat_rate_plot_.set_title('$\Delta{E}_t = \int_{0}^{t} \dot{Q}(s) - \dot{W}(s) \,ds$, (kJ)')
         heat_rate_plot_.set_xlim(0.0, self.duration_QDial.maximum())
         heat_rate_plot_.set_ylabel('$\dot{Q}$ (kW)')
         try:
