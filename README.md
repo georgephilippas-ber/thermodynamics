@@ -12,6 +12,8 @@ thermodynamics
     * Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.
 * [SymPy](https://www.sympy.org/en/index.html)
     * SymPy is a Python library for symbolic mathematics.
+* [LaTeX](https://www.latex-project.org/)
+  * LaTeX is a high-quality typesetting system; it includes features designed for the production of technical and scientific documentation.
 ### features
 * `sympy.sympify`
 * `sympy.lambdify`
