@@ -2,7 +2,7 @@ thermodynamics
 
 ### purpose
 
-calculates the change of energy stored in a system that takes place over a specific time period given the rate of heat that is transferred to it and the rate of work done by it as functions of time
+calculates the change of energy stored in a system that takes place over a specific time period given the rate of heat transferred to it and the rate of work done by it as functions of time
 
 ### install/run
 ```bash
